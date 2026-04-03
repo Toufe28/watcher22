@@ -4,7 +4,7 @@ import { StringSession } from "telegram/sessions/index.js";
 import { NewMessage } from "telegram/events/index.js";
 import TelegramBot from "node-telegram-bot-api";
 import { Redis } from "@upstash/redis";
-
+import http from "http"; // 👈 أضف هذا السطر
 // ==========================
 // 🔐 سحب البيانات من ملف .env بأمان
 // ==========================
@@ -122,7 +122,16 @@ bot.on("message", async (msg) => {
         return bot.sendMessage(userId, "✅ تم الحفظ في قاعدة البيانات بنجاح.");
     }
 });
-
+// ==========================
+// 🌐 خدعة منصة Render (السيرفر الوهمي)
+// ==========================
+const port = process.env.PORT || 3000;
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end("البوت يعمل بنجاح 🚀");
+}).listen(port, () => {
+    console.log(`✅ السيرفر الوهمي شغال على بورت ${port} لإرضاء منصة Render`);
+});
 // ==========================
 // 📨 Userbot Logic
 // ==========================
