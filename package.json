@@ -1,0 +1,19 @@
+{
+  "name": "telegram-monitor-bot",
+  "version": "1.0.0",
+  "description": "بوت مراقبة التلجرام باستخدام GramJS و Upstash Redis",
+  "main": "watch.js",
+  "type": "module",
+  "scripts": {
+    "start": "node watch.js"
+  },
+  "author": "Mustafa",
+  "license": "ISC",
+  "dependencies": {
+    "@upstash/redis": "^1.28.4",
+    "dotenv": "^16.4.5",
+    "input": "^1.0.1",
+    "node-telegram-bot-api": "^0.64.0",
+    "telegram": "^2.22.2"
+  }
+}
